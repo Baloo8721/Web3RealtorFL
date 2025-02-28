@@ -255,7 +255,6 @@
     .popup button:hover {
       background: #0099cc;
     }
-    iframe { display: none; }
     @media (max-width: 480px) {
       h1 { font-size: 1.8em; }
       p.subtitle { font-size: 0.9em; }
@@ -271,7 +270,7 @@
     <h1>Unlock Your Florida Property</h1>
     <p class="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
     <div class="form-box">
-      <form id="referralForm" target="hiddenIframe" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post" onsubmit="showPopup()">
+      <form id="referralForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post" onsubmit="submitForm(event)">
         <input type="text" name="entry.29929900" placeholder="Your Name">
         <input type="email" name="entry.194166878" placeholder="Your Email">
         <select name="entry.664237403">
@@ -551,7 +550,6 @@
         
         <button type="submit">Find My Agent</button>
       </form>
-      <iframe name="hiddenIframe"></iframe>
     </div>
     <p class="footer">Powered by Baloo - Bridging Real Estate & Web3</p>
   </div>
@@ -572,13 +570,26 @@
       }
     }
 
-    function showPopup() {
+    function submitForm(event) {
+      event.preventDefault();
       const form = document.getElementById("referralForm");
-      document.getElementById("thankYouPopup").style.display = "block";
-      setTimeout(() => {
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).then(() => {
+        document.getElementById("thankYouPopup").style.display = "block";
+        setTimeout(() => {
+          form.reset();
+          document.getElementById("moreInfo").style.display = "none";
+        }, 500);
+      }).catch(error => {
+        console.error('Error:', error);
+        document.getElementById("thankYouPopup").style.display = "block";
         form.reset();
-        document.getElementById("moreInfo").style.display = "none";
-      }, 500); // Delay to ensure submission hits Google
+      });
     }
 
     function closePopup() {
