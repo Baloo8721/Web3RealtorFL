@@ -255,7 +255,6 @@
     .popup button:hover {
       background: #0099cc;
     }
-    iframe { display: none; }
     @media (max-width: 480px) {
       h1 { font-size: 1.8em; }
       p.subtitle { font-size: 0.9em; }
@@ -271,7 +270,7 @@
     <h1>Unlock Your Florida Property</h1>
     <p class="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
     <div class="form-box">
-      <form id="referralForm" target="hiddenIframe" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post" onsubmit="showPopup()">
+      <form id="referralForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post" onsubmit="submitForm(event)">
         <input type="text" name="entry.29929900" placeholder="Your Name">
         <input type="email" name="entry.194166878" placeholder="Your Email">
         <select name="entry.664237403">
@@ -292,13 +291,13 @@
           <div class="section">
             <h4 class="section-title">Client Type</h4>
             <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="entry.2125021941" value="Option 1"> Buyer</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.1530468854" value="Option 1"> Seller</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.543064537" value="Option 1"> Renter</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.2121218188" value="Option 1"> Landlord</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.1540533292" value="Option 1"> Investor</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.2094145242" value="Option 1"> First-time</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.1682660374" value="Option 1"> Relocating</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.2125021941" value="Buyer"> Buyer</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.1530468854" value="Seller"> Seller</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.543064537" value="Renter"> Renter</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.2121218188" value="Landlord"> Landlord</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.1540533292" value="Investor"> Investor</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.2094145242" value="First-time"> First-time</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.1682660374" value="Relocating"> Relocating</label>
             </div>
           </div>
           
@@ -308,19 +307,19 @@
             <div class="form-group">
               <p class="form-group-title">Preferred Contact Method:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1784470935" value="Option 1"> Email</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1382135505" value="Option 1"> Phone</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.746457842" value="Option 1"> Text</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1784470935" value="Email"> Email</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1382135505" value="Phone"> Phone</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.746457842" value="Text"> Text</label>
               </div>
             </div>
             
             <div class="form-group">
               <p class="form-group-title">Best Time to Contact:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.507870323" value="Option 1"> Morning</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.633156447" value="Option 1"> Afternoon</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1588225936" value="Option 1"> Evening</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.396561234" value="Option 1"> Weekend</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.507870323" value="Morning"> Morning</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.633156447" value="Afternoon"> Afternoon</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1588225936" value="Evening"> Evening</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.396561234" value="Weekend"> Weekend</label>
               </div>
             </div>
             
@@ -344,9 +343,9 @@
             <div class="form-group">
               <p class="form-group-title">Pre-approved for Mortgage?</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1486562159" value="Option 1"> Yes</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.11298010" value="Option 1"> No</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1352288329" value="Option 1"> In Process</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1486562159" value="Yes"> Yes</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.11298010" value="No"> No</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1352288329" value="In Process"> In Process</label>
               </div>
               <input type="text" name="entry.1914208" placeholder="Pre-approval Amount (if applicable)">
             </div>
@@ -354,18 +353,18 @@
             <div class="form-group">
               <p class="form-group-title">Preferred Lender:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.2001525745" value="Option 1"> Have One</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1610573986" value="Option 1"> Need Recommendation</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2001525745" value="Have one"> Have One</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1610573986" value="Need Recommendation"> Need Recommendation</label>
               </div>
             </div>
             
             <div class="form-group">
               <p class="form-group-title">Timeline:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1350110018" value="Option 1"> Immediate</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1154472175" value="Option 1"> 1-3 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.541301262" value="Option 1"> 3-6 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.955570355" value="Option 1"> 6+ Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1350110018" value="Timeline: Immediate"> Immediate</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1154472175" value="Timeline: 1-3 Months"> 1-3 Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.541301262" value="Timeline: 3-6 Months"> 3-6 Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.955570355" value="Timeline: 6+ Months"> 6+ Months</label>
               </div>
             </div>
             
@@ -380,36 +379,36 @@
             <div class="form-group">
               <p class="form-group-title">Property Type:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.2032480613" value="Option 1"> Single-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1441698003" value="Option 1"> Condo</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.893527413" value="Option 1"> Townhouse</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.936901716" value="Option 1"> Multi-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.710696599" value="Option 1"> Commercial</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1394304339" value="Option 1"> Land</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2032480613" value="Property Type: Single-family"> Single-family</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1441698003" value="Property Type: Condo"> Condo</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.893527413" value="Property Type: Townhouse"> Townhouse</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.936901716" value="Property Type: Multi-family"> Multi-family</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.710696599" value="Property Type: Commercial"> Commercial</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1394304339" value="Property Type: Land"> Land</label>
               </div>
             </div>
             
             <div class="form-group">
               <p class="form-group-title">Bedrooms:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.381637243" value="Option 1"> 1 Bed</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.490256528" value="Option 1"> 2 Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1853218821" value="Option 1"> 3 Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.450869975" value="Option 1"> 4 Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.2124537367" value="Option 1"> 5+ Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.745418077" value="Option 1"> No Preference</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.381637243" value="Bedrooms: 1 Bed"> 1 Bed</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.490256528" value="Bedrooms: 2 Bed"> 2 Beds</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1853218821" value="Bedrooms: 3 Bed"> 3 Beds</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.450869975" value="Bedrooms: 4 Bed"> 4 Beds</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2124537367" value="Bedrooms: 5+ Bed"> 5+ Beds</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.745418077" value="Bedrooms: No Preference"> No Preference</label>
               </div>
             </div>
             
             <div class="form-group">
               <p class="form-group-title">Bathrooms:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.473709838" value="Option 1"> 1 Bath</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.558316983" value="Option 1"> 1.5 Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1272970267" value="Option 1"> 2 Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.858835020" value="Option 1"> 2.5 Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1878111594" value="Option 1"> 3+ Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1808838484" value="Option 1"> No Preference</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.473709838" value="Bathrooms: 1 Bath"> 1 Bath</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.558316983" value="Bathrooms: 1.5 Bath"> 1.5 Baths</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1272970267" value="Bathrooms: 2 Bath"> 2 Baths</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.858835020" value="Bathrooms: 2.5 Bath"> 2.5 Baths</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1878111594" value="Bathrooms: 3+ Bath"> 3+ Baths</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1808838484" value="Bathrooms: No Preference"> No Preference</label>
               </div>
             </div>
             
@@ -421,20 +420,20 @@
             <div class="form-group">
               <p class="form-group-title">Must-Have Features:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.186840909" value="Option 1"> Garage</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.2019790382" value="Option 1"> Basement</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.41356420" value="Option 1"> Pool</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1340775271" value="Option 1"> Yard</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.537888490" value="Option 1"> Main Floor Bedroom</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.766433860" value="Option 1"> Home Office</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1135960778" value="Option 1"> Open Floor Plan</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1108962639" value="Option 1"> Updated Kitchen</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.912778126" value="Option 1"> Updated Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1595561522" value="Option 1"> Fireplace</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1229026181" value="Option 1"> Central A/C</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1332651778" value="Option 1"> Hardwood Floors</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.582819493" value="Option 1"> Move-in Ready</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.112908864" value="Option 1"> Fixer-Upper OK</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.186840909" value="Must-Have: Garage"> Garage</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2019790382" value="Must-Have: Basement"> Basement</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.41356420" value="Must-Have: Pool"> Pool</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1340775271" value="Must-Have: Yard"> Yard</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.537888490" value="Must-Have: Main Floor Bedroom"> Main Floor Bedroom</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.766433860" value="Must-Have: Home Office"> Home Office</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1135960778" value="Must-Have: Open Floor Plan"> Open Floor Plan</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1108962639" value="Must-Have: Updated Kitchen"> Updated Kitchen</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.912778126" value="Must-Have: Updated Baths"> Updated Baths</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1595561522" value="Must-Have: Fireplace"> Fireplace</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1229026181" value="Must-Have: Central A/C"> Central A/C</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1332651778" value="Must-Have: Hardwood Floors"> Hardwood Floors</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.582819493" value="Must-Have: Move-in Ready"> Move-in Ready</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.112908864" value="Must-Have: Fixer-Upper OK"> Fixer-Upper OK</label>
               </div>
               <textarea name="entry.1696772007" placeholder="Other Features"></textarea>
             </div>
@@ -454,12 +453,12 @@
             <div class="form-group">
               <p class="form-group-title">Property Type:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1964844066" value="Option 1"> Single-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.320610869" value="Option 1"> Condo</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1576703618" value="Option 1"> Townhouse</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1409071418" value="Option 1"> Multi-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.386997212" value="Option 1"> Commercial</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.252273983" value="Option 1"> Land</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1964844066" value="Property Type: Single-family"> Single-family</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.320610869" value="Property Type: Condo"> Condo</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1576703618" value="Property Type: Townhouse"> Townhouse</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1409071418" value="Property Type: Multi-family"> Multi-family</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.386997212" value="Property Type: Commercial"> Commercial</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.252273983" value="Property Type: Land"> Land</label>
               </div>
             </div>
             
@@ -481,11 +480,11 @@
             <div class="form-group">
               <p class="form-group-title">Reason for Selling/Renting:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1965702414" value="Option 1"> Upgrading</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1916753753" value="Option 1"> Downsizing</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1063786855" value="Option 1"> Relocating</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.391207480" value="Option 1"> Investment</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.652358924" value="Option 1"> Financial</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1965702414" value="Reason: Upgrading"> Upgrading</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1916753753" value="Reason: Downsizing"> Downsizing</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1063786855" value="Reason: Relocating"> Relocating</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.391207480" value="Reason: Investment"> Investment</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.652358924" value="Reason: Financial"> Financial</label>
               </div>
               <textarea name="entry.2025298834" placeholder="Other Reason"></textarea>
             </div>
@@ -493,20 +492,20 @@
             <div class="form-group">
               <p class="form-group-title">Timeline to Sell/Rent:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1209899382" value="Option 1"> ASAP</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1878946645" value="Option 1"> 1-3 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.983580418" value="Option 1"> 3-6 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.788733893" value="Option 1"> 6+ Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1209899382" value="Timeline: ASAP"> ASAP</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1878946645" value="Timeline: 1-3 Months"> 1-3 Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.983580418" value="Timeline: 3-6 Months"> 3-6 Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.788733893" value="Timeline: 6+ Months"> 6+ Months</label>
               </div>
             </div>
             
             <div class="form-group">
               <p class="form-group-title">Property Condition:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1925501794" value="Option 1"> Excellent</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1675887181" value="Option 1"> Good</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.82161121" value="Option 1"> Fair</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.799326532" value="Option 1"> Needs Work</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1925501794" value="Condition: Excellent"> Excellent</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1675887181" value="Condition: Good"> Good</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.82161121" value="Condition: Fair"> Fair</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.799326532" value="Condition: Needs Work"> Needs Work</label>
               </div>
             </div>
             
@@ -525,11 +524,11 @@
             <div class="form-group">
               <p class="form-group-title">How did you hear about us?</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.739656714" value="Option 1"> Referral</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.623494412" value="Option 1"> Website</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1204546887" value="Option 1"> Social Media</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.489161094" value="Option 1"> Sign</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1272950740" value="Option 1"> Online Review</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.739656714" value="Heard: Referral"> Referral</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.623494412" value="Heard: Website"> Website</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1204546887" value="Heard: Social Media"> Social Media</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.489161094" value="Heard: Sign"> Sign</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1272950740" value="Heard: Online Review"> Online Review</label>
               </div>
               <textarea name="entry.2122877220" placeholder="Other Source"></textarea>
             </div>
@@ -537,8 +536,8 @@
             <div class="form-group">
               <p class="form-group-title">Previous Agent Experience:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1463224356" value="Option 1"> Worked with Agent</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1363468769" value="Option 1"> No Agent Experience</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1463224356" value="Other SourceAgent Experience: Yes"> Worked with Agent</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1363468769" value="Agent Experience: No"> No Agent Experience</label>
               </div>
               <textarea name="entry.1285214427" placeholder="Describe Previous Agent Experience"></textarea>
             </div>
@@ -551,7 +550,6 @@
         
         <button type="submit">Find My Agent</button>
       </form>
-      <iframe name="hiddenIframe"></iframe>
     </div>
     <p class="footer">Powered by Baloo - Bridging Real Estate & Web3</p>
   </div>
@@ -572,13 +570,26 @@
       }
     }
 
-    function showPopup() {
+    function submitForm(event) {
+      event.preventDefault();
       const form = document.getElementById("referralForm");
-      document.getElementById("thankYouPopup").style.display = "block";
-      setTimeout(() => {
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).then(() => {
+        document.getElementById("thankYouPopup").style.display = "block";
+        setTimeout(() => {
+          form.reset();
+          document.getElementById("moreInfo").style.display = "none";
+        }, 500);
+      }).catch(error => {
+        console.error('Error:', error);
+        document.getElementById("thankYouPopup").style.display = "block";
         form.reset();
-        document.getElementById("moreInfo").style.display = "none";
-      }, 500); // Delay to ensure submission hits Google
+      });
     }
 
     function closePopup() {
