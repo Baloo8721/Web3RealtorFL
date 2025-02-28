@@ -255,6 +255,7 @@
     .popup button:hover {
       background: #0099cc;
     }
+    iframe { display: none; }
     @media (max-width: 480px) {
       h1 { font-size: 1.8em; }
       p.subtitle { font-size: 0.9em; }
@@ -270,7 +271,7 @@
     <h1>Unlock Your Florida Property</h1>
     <p class="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
     <div class="form-box">
-      <form id="referralForm" onsubmit="submitForm(event)">
+      <form id="referralForm" target="hiddenIframe" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post" onsubmit="showPopup()">
         <input type="text" name="entry.29929900" placeholder="Your Name">
         <input type="email" name="entry.194166878" placeholder="Your Email">
         <select name="entry.664237403">
@@ -550,6 +551,7 @@
         
         <button type="submit">Find My Agent</button>
       </form>
+      <iframe name="hiddenIframe"></iframe>
     </div>
     <p class="footer">Powered by Baloo - Bridging Real Estate & Web3</p>
   </div>
@@ -570,33 +572,13 @@
       }
     }
 
-    function submitForm(event) {
-      event.preventDefault(); // Stop default submission
-
-      const form = document.getElementById("referralForm");
-      const formData = new FormData(form);
-      const url = "https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse";
-
-      fetch(url, {
-        method: "POST",
-        body: formData,
-        mode: "no-cors" // Prevents CORS issues
-      })
-      .then(response => {
-        console.log("Form submitted:", response); // Log success
-        showPopup(); // Show popup regardless of response
-      })
-      .catch(error => {
-        console.error("Error submitting form:", error); // Log error
-        showPopup(); // Show popup even on error (data might still go through)
-      });
-    }
-
     function showPopup() {
       const form = document.getElementById("referralForm");
       document.getElementById("thankYouPopup").style.display = "block";
-      form.reset(); // Clear form
-      document.getElementById("moreInfo").style.display = "none"; // Hide dropdown
+      setTimeout(() => {
+        form.reset();
+        document.getElementById("moreInfo").style.display = "none";
+      }, 100); // Delay to ensure submission completes
     }
 
     function closePopup() {
