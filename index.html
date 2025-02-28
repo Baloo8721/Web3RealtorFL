@@ -225,6 +225,37 @@
       letter-spacing: 0.03em;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(43, 43, 43, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      text-align: center;
+      z-index: 1000;
+    }
+    .popup p {
+      margin: 0 0 15px;
+      font-size: 1.1em;
+    }
+    .popup button {
+      background: #00ccff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 500;
+    }
+    .popup button:hover {
+      background: #0099cc;
+    }
+    iframe { display: none; }
     @media (max-width: 480px) {
       h1 { font-size: 1.8em; }
       p.subtitle { font-size: 0.9em; }
@@ -240,16 +271,16 @@
     <h1>Unlock Your Florida Property</h1>
     <p class="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
     <div class="form-box">
-      <form id="referralForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post">
+      <form id="referralForm" target="hiddenIframe" action="https://docs.google.com/forms/d/e/1FAIpQLSfQssMhqi3lpTrwHc7k2fS5uoFSEsQV9hWw0xnPpOVQldWCng/formResponse" method="post" onsubmit="showPopup()">
         <input type="text" name="entry.29929900" placeholder="Your Name">
         <input type="email" name="entry.194166878" placeholder="Your Email">
         <select name="entry.664237403">
           <option value="">Buyer, Seller, Renter, Landlord, Investor</option>
-          <option value="buyer">Buyer</option>
-          <option value="seller">Seller</option>
-          <option value="renter">Renter</option>
-          <option value="landlord">Landlord</option>
-          <option value="investor">Investor</option>
+          <option value="Buyer">Buyer</option>
+          <option value="Seller">Seller</option>
+          <option value="Renter">Renter</option>
+          <option value="Landlord">Landlord</option>
+          <option value="Investor">Investor</option>
         </select>
         <textarea name="entry.928741499" placeholder="Please share a few details—like your budget, questions, or preferred area."></textarea>
         <button type="button" class="dropdown-btn" onclick="toggleDropdown()">Add More Details for the Perfect Agent Match <span class="dropdown-icon">▼</span></button>
@@ -520,8 +551,15 @@
         
         <button type="submit">Find My Agent</button>
       </form>
+      <iframe name="hiddenIframe"></iframe>
     </div>
     <p class="footer">Powered by Baloo - Bridging Real Estate & Web3</p>
+  </div>
+
+  <!-- Popup -->
+  <div id="thankYouPopup" class="popup">
+    <p>Thank you for submitting! An agent will contact you soon.</p>
+    <button onclick="closePopup()">OK</button>
   </div>
 
   <script>
@@ -532,6 +570,19 @@
       } else {
         content.style.display = "block";
       }
+    }
+
+    function showPopup() {
+      const form = document.getElementById("referralForm");
+      document.getElementById("thankYouPopup").style.display = "block";
+      setTimeout(() => {
+        form.reset();
+        document.getElementById("moreInfo").style.display = "none";
+      }, 500); // Delay to ensure submission hits Google
+    }
+
+    function closePopup() {
+      document.getElementById("thankYouPopup").style.display = "none";
     }
   </script>
 </body>
