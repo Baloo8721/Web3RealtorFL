@@ -270,7 +270,7 @@
     <h1>Unlock Your Florida Property</h1>
     <p class="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
     <div class="form-box">
-      <form id="referralForm" action="https://docs.google.com/forms/d/e/1FAIpQLSegIYmEO6DOSP9LLY3Zao_nK7Un5vEuA_LrtZgyJvedzvXs0Q/formResponse" method="post" onsubmit="submitForm(event)">
+      <form id="referralForm" action="https://docs.google.com/forms/d/e/1FAIpQLSegIYmEO6DOSP9LLY3Zao_nK7Un5vEuA_LrtZgyJvedzvXs0Q/formResponse" method="post" target="hiddenIframe" onsubmit="submitForm(event)">
         <input type="text" name="entry.29929900" placeholder="Your Name">
         <input type="email" name="entry.194166878" placeholder="Your Email">
         <select name="entry.664237403">
@@ -560,6 +560,9 @@
     <button onclick="closePopup()">OK</button>
   </div>
 
+  <!-- Hidden iframe for form submission -->
+  <iframe name="hiddenIframe" style="display:none;"></iframe>
+
   <script>
     function toggleDropdown() {
       var content = document.getElementById("moreInfo");
@@ -575,27 +578,15 @@
       const form = document.getElementById("referralForm");
       const formData = new FormData(form);
 
-      // Submit to Google Form without redirecting
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        mode: 'cors', // Allow CORS to send properly
-        redirect: 'manual' // Prevent redirect
-      }).then(response => {
-        // Show popup and reset form, no redirect
-        document.getElementById("thankYouPopup").style.display = "block";
-        setTimeout(() => {
-          form.reset();
-          document.getElementById("moreInfo").style.display = "none";
-        }, 500);
-      }).catch(error => {
-        console.error('Error:', error);
-        document.getElementById("thankYouPopup").style.display = "block";
+      // Show popup immediately
+      document.getElementById("thankYouPopup").style.display = "block";
+      setTimeout(() => {
         form.reset();
-      });
+        document.getElementById("moreInfo").style.display = "none";
+      }, 500);
 
-      // Prevent any default redirect behavior
-      return false;
+      // Submit to iframe silently
+      form.submit();
     }
 
     function closePopup() {
