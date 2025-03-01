@@ -573,23 +573,16 @@
     function submitForm(event) {
       event.preventDefault();
       const form = document.getElementById("referralForm");
-      const formData = new FormData(form);
-      
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-      }).then(() => {
-        document.getElementById("thankYouPopup").style.display = "block";
-        setTimeout(() => {
-          form.reset();
-          document.getElementById("moreInfo").style.display = "none";
-        }, 500);
-      }).catch(error => {
-        console.error('Error:', error);
-        document.getElementById("thankYouPopup").style.display = "block";
+
+      // Submit directly to Google Forms
+      form.submit();
+
+      // Show popup and reset form
+      document.getElementById("thankYouPopup").style.display = "block";
+      setTimeout(() => {
         form.reset();
-      });
+        document.getElementById("moreInfo").style.display = "none";
+      }, 500);
     }
 
     function closePopup() {
