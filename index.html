@@ -575,12 +575,14 @@
       const form = document.getElementById("referralForm");
       const formData = new FormData(form);
 
-      // Use fetch to submit without redirect
+      // Submit to Google Form without redirecting
       fetch(form.action, {
         method: 'POST',
-        body: formData
-      }).then(() => {
-        // Show popup and reset form without leaving page
+        body: formData,
+        mode: 'cors', // Allow CORS to send properly
+        redirect: 'manual' // Prevent redirect
+      }).then(response => {
+        // Show popup and reset form, no redirect
         document.getElementById("thankYouPopup").style.display = "block";
         setTimeout(() => {
           form.reset();
@@ -591,6 +593,9 @@
         document.getElementById("thankYouPopup").style.display = "block";
         form.reset();
       });
+
+      // Prevent any default redirect behavior
+      return false;
     }
 
     function closePopup() {
