@@ -3,610 +3,1073 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web3RealtorFL - Your Florida Property Match</title>
+  <title data-lang="title">Web3RealtorFL - Your Florida Property Match</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 0.95em;
-    font-weight: 400;
-    line-height: 1.5;
-    padding: 30px 15px;
-    text-align: center;
-    position: relative;
-  }
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(26, 26, 26, 0.7);
-    z-index: 1;
-  }
-  .container {
-    max-width: 550px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-  }
-  h1, h3, h4, .section-title, .form-group-title {
-    font-family: 'Inter', sans-serif;
-  }
-  h1 {
-    font-size: 2.25em;
-    color: #00ccff;
-    margin-bottom: 8px;
-    font-weight: 500;
-    letter-spacing: -0.015em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  p.subtitle {
-    font-size: 1.15em;
-    color: #e6e6e6;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    margin-bottom: 20px;
-  }
-  .form-box {
-    background: rgba(43, 43, 43, 0.9);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  }
-  form input, form textarea, form select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.1); /* Light, translucent base */
-    color: #fff;
-    font-size: 1em;
-    font-weight: 400;
-    outline: none;
-    transition: background 0.3s ease;
-  }
-  form input:focus, form textarea:focus, form select:focus {
-    background: rgba(255, 255, 255, 0.15); /* Slight highlight on focus */
-  }
-  form input::placeholder, form textarea::placeholder {
-    color: #d0d0d0;
-    font-weight: 300;
-  }
-  form textarea {
-    height: 70px;
-    resize: vertical;
-  }
-  form select {
-    background: rgba(255, 255, 255, 0.1) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="white"><polygon points="0,0 8,0 4,8"/></svg>') no-repeat 95% center;
-    appearance: none;
-  }
-  .dropdown-btn {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    background: linear-gradient(to right, rgba(41, 41, 51, 0.9), rgba(51, 51, 66, 0.9));
-    color: #fff;
-    border: 1px solid #00ccff;
-    border-radius: 6px;
-    font-size: 0.9em;
-    cursor: pointer;
-    transition: background 0.3s ease, border-color 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
-  }
-  .dropdown-btn:hover {
-    background: linear-gradient(to right, rgba(51, 51, 66, 0.9), rgba(61, 61, 76, 0.9));
-    border-color: #0099cc;
-  }
-  .dropdown-icon {
-    font-size: 0.7em;
-    margin-left: 10px;
-    opacity: 0.9;
-  }
-  .dropdown-content {
-    display: none;
-    background: rgba(38, 38, 45, 0.95);
-    padding: 15px;
-    margin: 8px 0;
-    border-radius: 8px;
-    text-align: left;
-    max-height: 350px;
-    overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-  .dropdown-content h3 {
-    font-size: 1.2em;
-    color: #00ccff;
-    margin-bottom: 20px;
-    text-align: center;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    opacity: 0.9;
-  }
-  .section {
-    margin-bottom: 25px;
-    padding: 18px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-  }
-  .section:nth-child(1) { background: linear-gradient(to right, rgba(41, 41, 51, 0.9), rgba(51, 51, 66, 0.9)); }
-  .section:nth-child(2) { background: linear-gradient(to right, rgba(47, 47, 57, 0.9), rgba(57, 57, 72, 0.9)); }
-  .section:nth-child(3) { background: linear-gradient(to right, rgba(53, 53, 63, 0.9), rgba(63, 63, 78, 0.9)); }
-  .section:nth-child(4) { background: linear-gradient(to right, rgba(59, 59, 69, 0.9), rgba(69, 69, 84, 0.9)); }
-  .section:nth-child(5) { background: linear-gradient(to right, rgba(65, 65, 75, 0.9), rgba(75, 75, 90, 0.9)); }
-  .section:nth-child(6) { background: linear-gradient(to right, rgba(71, 71, 81, 0.9), rgba(81, 81, 96, 0.9)); }
-  .section-title {
-    font-size: 1.05em;
-    color: #00ccff;
-    margin-bottom: 18px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-  .section-title::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.3);
-    margin-left: 15px;
-  }
-  .form-group {
-    margin-bottom: 12px;
-  }
-  .form-group-title {
-    font-size: 0.88em;
-    color: #e6e6e6;
-    margin-bottom: 10px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    opacity: 0.9;
-  }
-  .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 10px;
-  }
-  .checkbox-label {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1); /* Harmonizes with inputs */
-    border-radius: 4px;
-    padding: 6px 10px;
-    margin: 3px;
-    font-size: 0.9em;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-  .checkbox-label:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-  }
-  .checkbox-label input {
-    width: auto;
-    margin-right: 6px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  .input-group {
-    display: flex;
-    gap: 8px;
-  }
-  .input-group input, .input-group select {
-    flex: 1;
-    margin: 3px 0;
-  }
-  form button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    background: linear-gradient(to right, #00ccff, #0099cc);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1em;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  form button:hover {
-    background: linear-gradient(to right, #0099cc, #0077aa);
-  }
-  .footer, .footer p, .footer a {
-    color: #666;
-    text-align: center;
-    font-size: 1em;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    margin-top: 30px;
-  }
-  .footer .company-name {
-    text-decoration: underline;
-  }
-  .footer a:hover {
-    color: #00ccff;
-  }
-  .popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(43, 43, 43, 0.95);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    color: #fff;
-    text-align: center;
-    z-index: 1000;
-  }
-  .popup p {
-    margin: 0 0 15px;
-    font-size: 1.1em;
-  }
-  .popup button {
-    background: linear-gradient(to right, #00ccff, #0099cc);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 500;
-    transition: background 0.3s ease;
-  }
-  .popup button:hover {
-    background: linear-gradient(to right, #0099cc, #0077aa);
-  }
-  @media (max-width: 480px) {
-    h1 { font-size: 1.8em; }
-    p.subtitle { font-size: 0.9em; }
-    .form-box { padding: 15px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 0.95em;
+      font-weight: 400;
+      line-height: 1.5;
+      padding: 60px 15px 30px 15px;
+      text-align: center;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 26, 0.7);
+      z-index: 1;
+    }
+    .container {
+      max-width: 550px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .language-selector {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+      border-radius: 0 0 0 20px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+    .language-selector span {
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .language-selector span:hover {
+      color: #fff;
+    }
+    h1, h3, h4, .section-title, .form-group-title {
+      font-family: 'Inter', sans-serif;
+    }
+    h1 {
+      font-size: 2.25em;
+      color: #00ccff;
+      margin-bottom: 8px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    p.subtitle {
+      font-size: 1.15em;
+      color: #e6e6e6;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+    }
+    .form-box {
+      background: rgba(43, 43, 43, 0.9);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1em;
+      font-weight: 400;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+    form input:focus, form textarea:focus, form select:focus {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    form input::placeholder, form textarea::placeholder {
+      color: #d0d0d0;
+      font-weight: 300;
+    }
+    form textarea {
+      height: 70px;
+      resize: vertical;
+    }
+    form select {
+      background: rgba(255, 255, 255, 0.1) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="white"><polygon points="0,0 8,0 4,8"/></svg>') no-repeat 95% center;
+      appearance: none;
+    }
+    .dropdown-btn {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      background: linear-gradient(to right, rgba(41, 41, 51, 0.9), rgba(51, 51, 66, 0.9));
+      color: #fff;
+      border: 1px solid #00ccff;
+      border-radius: 6px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .dropdown-btn:hover {
+      background: linear-gradient(to right, rgba(51, 51, 66, 0.9), rgba(61, 61, 76, 0.9));
+      border-color: #0099cc;
+    }
+    .dropdown-icon {
+      font-size: 0.7em;
+      margin-left: 10px;
+      opacity: 0.9;
+    }
+    .dropdown-content {
+      display: none;
+      background: rgba(38, 38, 45, 0.95);
+      padding: 15px;
+      margin: 8px 0;
+      border-radius: 8px;
+      text-align: left;
+      max-height: 350px;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .dropdown-content h3 {
+      font-size: 1.2em;
+      color: #00ccff;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+    .section {
+      margin-bottom: 25px;
+      padding: 18px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    .section:nth-child(1) { background: linear-gradient(to right, rgba(41, 41, 51, 0.9), rgba(51, 51, 66, 0.9)); }
+    .section:nth-child(2) { background: linear-gradient(to right, rgba(47, 47, 57, 0.9), rgba(57, 57, 72, 0.9)); }
+    .section:nth-child(3) { background: linear-gradient(to right, rgba(53, 53, 63, 0.9), rgba(63, 63, 78, 0.9)); }
+    .section:nth-child(4) { background: linear-gradient(to right, rgba(59, 59, 69, 0.9), rgba(69, 69, 84, 0.9)); }
+    .section:nth-child(5) { background: linear-gradient(to right, rgba(65, 65, 75, 0.9), rgba(75, 75, 90, 0.9)); }
+    .section:nth-child(6) { background: linear-gradient(to right, rgba(71, 71, 81, 0.9), rgba(81, 81, 96, 0.9)); }
+    .section-title {
+      font-size: 1.05em;
+      color: #00ccff;
+      margin-bottom: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .section-title::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.3);
+      margin-left: 15px;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group-title {
+      font-size: 0.88em;
+      color: #e6e6e6;
+      margin-bottom: 10px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      opacity: 0.9;
+    }
     .checkbox-group {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 6px;
+      margin-bottom: 10px;
     }
     .checkbox-label {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 6px 10px;
+      margin: 3px;
+      font-size: 0.9em;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .checkbox-label:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    .checkbox-label input {
       width: auto;
-      margin: 0;
-      font-size: 0.85em;
-      padding: 5px 8px;
+      margin-right: 6px;
+      margin-top: 0;
+      margin-bottom: 0;
     }
-    .checkbox-label:only-child,
-    .checkbox-label:nth-last-child(1):nth-child(odd) {
-      grid-column: 1 / -1;
+    .input-group {
+      display: flex;
+      gap: 8px;
     }
-    .dropdown-content { max-height: 400px; }
-    .input-group { flex-direction: column; gap: 4px; }
-  }
-  .section {
-    animation: fadeIn 0.4s ease-in-out;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0.6; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+    .input-group input, .input-group select {
+      flex: 1;
+      margin: 3px 0;
+    }
+    form button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(to right, #00ccff, #0099cc);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    form button:hover {
+      background: linear-gradient(to right, #0099cc, #0077aa);
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0 20px;
+      margin-top: 20px;
+    }
+    .powered-by {
+      color: #666;
+      font-size: 1em;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .powered-by u {
+      text-decoration: underline;
+      text-decoration-color: #666;
+      text-underline-offset: 2px;
+    }
+    .powered-by:hover {
+      color: #999;
+    }
+    .powered-by:hover u {
+      text-decoration-color: #999;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(43, 43, 43, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      text-align: center;
+      z-index: 1000;
+    }
+    .popup p {
+      margin: 0 0 15px;
+      font-size: 1.1em;
+    }
+    .popup button {
+      background: linear-gradient(to right, #00ccff, #0099cc);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    .popup button:hover {
+      background: linear-gradient(to right, #0099cc, #0077aa);
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8em; }
+      p.subtitle { font-size: 0.9em; }
+      .form-box { padding: 15px; }
+      .checkbox-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+      }
+      .checkbox-label {
+        width: auto;
+        margin: 0;
+        font-size: 0.85em;
+        padding: 5px 8px;
+      }
+      .checkbox-label:only-child,
+      .checkbox-label:nth-last-child(1):nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+      .dropdown-content { max-height: 400px; }
+      .input-group { flex-direction: column; gap: 4px; }
+      .language-selector { 
+        padding: 8px 15px;
+        font-size: 0.8em;
+      }
+      body {
+        padding: 50px 15px 30px 15px;
+      }
+    }
+    .section { animation: fadeIn 0.4s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0.6; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
+  <div class="language-selector">
+    English | Spanish | 中文
+  </div>
+
+  <script>
+    const languageSelector = document.querySelector('.language-selector');
+    languageSelector.innerHTML = `
+      <span onclick="changeLanguage('en')">English</span> | 
+      <span onclick="changeLanguage('es')">Spanish</span> | 
+      <span onclick="changeLanguage('zh')">中文</span>
+    `;
+
+    function changeLanguage(lang) {
+      const spans = document.querySelectorAll('.language-selector span');
+      spans.forEach(span => {
+        span.style.color = 'rgba(255, 255, 255, 0.5)';
+      });
+      event.target.style.color = '#fff';
+      
+      // Implement language change logic here
+      console.log('Language changed to:', lang);
+    }
+  </script>
+
   <div class="container">
-    <h1>Unlock Your Florida Property</h1>
-    <p class="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
+    <h1 data-lang="title">Unlock Your Florida Property</h1>
+    <p class="subtitle" data-lang="subtitle">Free Agent Matching by a Licensed FL Expert + Web3 Innovator</p>
     <div class="form-box">
       <form id="referralForm" action="https://docs.google.com/forms/d/e/1FAIpQLSegIYmEO6DOSP9LLY3Zao_nK7Un5vEuA_LrtZgyJvedzvXs0Q/formResponse" method="post" target="hiddenIframe" onsubmit="submitForm(event)">
-        <input type="text" name="entry.29929900" placeholder="Your Name">
-        <input type="email" name="entry.194166878" placeholder="Your Email">
+        <input type="text" name="entry.29929900" placeholder="Your Name" data-lang="name">
+        <input type="email" name="entry.194166878" placeholder="Your Email" data-lang="email">
         <select name="entry.664237403">
-          <option value="">Buyer, Seller, Renter, Landlord, Investor</option>
-          <option value="Buyer">Buyer</option>
-          <option value="Seller">Seller</option>
-          <option value="Renter">Renter</option>
-          <option value="Landlord">Landlord</option>
-          <option value="Investor">Investor</option>
+          <option value="" data-lang="type_select">Buyer, Seller, Renter, Landlord, Investor</option>
+          <option value="Buyer" data-lang="type_buyer">Buyer</option>
+          <option value="Seller" data-lang="type_seller">Seller</option>
+          <option value="Renter" data-lang="type_renter">Renter</option>
+          <option value="Landlord" data-lang="type_landlord">Landlord</option>
+          <option value="Investor" data-lang="type_investor">Investor</option>
         </select>
-        <textarea name="entry.928741499" placeholder="Please share some details about your needs (location, timeline, budget, etc.)"></textarea>
-        <button type="button" class="dropdown-btn" onclick="toggleDropdown()">+ Add More Details for a Tailored Agent Match! <span class="dropdown-icon">▼</span></button>
+        <textarea name="entry.928741499" placeholder="Please share some details about your needs (location, timeline, budget, etc.)" data-lang="details"></textarea>
+        <button type="button" class="dropdown-btn" onclick="toggleDropdown()" data-lang="dropdown_btn">+ Add More Details for a Tailored Agent Match! <span class="dropdown-icon">▼</span></button>
         
         <div id="moreInfo" class="dropdown-content">
-          <h3>Client Intake Information</h3>
+          <h3 data-lang="intake_title">Client Intake Information</h3>
           
           <!-- SECTION 1: CLIENT TYPE -->
           <div class="section">
-            <h4 class="section-title">Client Type</h4>
+            <h4 class="section-title" data-lang="client_type">Client Type</h4>
             <div class="checkbox-group">
-              <label class="checkbox-label"><input type="checkbox" name="entry.2125021941" value="Buyer"> Buyer</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.1530468854" value="Seller"> Seller</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.543064537" value="Renter"> Renter</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.2121218188" value="Landlord"> Landlord</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.1540533292" value="Investor"> Investor</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.2094145242" value="First-time"> First-time</label>
-              <label class="checkbox-label"><input type="checkbox" name="entry.1682660374" value="Relocating"> Relocating</label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.2125021941" value="Buyer"> <span data-lang="type_buyer">Buyer</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.1530468854" value="Seller"> <span data-lang="type_seller">Seller</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.543064537" value="Renter"> <span data-lang="type_renter">Renter</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.2121218188" value="Landlord"> <span data-lang="type_landlord">Landlord</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.1540533292" value="Investor"> <span data-lang="type_investor">Investor</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.2094145242" value="First-time"> <span data-lang="first_time">First-time</span></label>
+              <label class="checkbox-label"><input type="checkbox" name="entry.1682660374" value="Relocating"> <span data-lang="relocating">Relocating</span></label>
             </div>
           </div>
           
           <!-- SECTION 2: CONTACT PREFERENCES -->
           <div class="section">
-            <h4 class="section-title">Contact Preferences</h4>
+            <h4 class="section-title" data-lang="contact_prefs">Contact Preferences</h4>
             <div class="form-group">
-              <p class="form-group-title">Preferred Contact Method:</p>
+              <p class="form-group-title" data-lang="pref_contact_method">Preferred Contact Method:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1784470935" value="Email"> Email</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1382135505" value="Phone"> Phone</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.746457842" value="Text"> Text</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1784470935" value="Email"> <span data-lang="email">Email</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1382135505" value="Phone"> <span data-lang="phone">Phone</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.746457842" value="Text"> <span data-lang="text">Text</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Best Time to Contact:</p>
+              <p class="form-group-title" data-lang="best_time">Best Time to Contact:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.507870323" value="Morning"> Morning</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.633156447" value="Afternoon"> Afternoon</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1588225936" value="Evening"> Evening</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.396561234" value="Weekend"> Weekend</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.507870323" value="Morning"> <span data-lang="morning">Morning</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.633156447" value="Afternoon"> <span data-lang="afternoon">Afternoon</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1588225936" value="Evening"> <span data-lang="evening">Evening</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.396561234" value="Weekend"> <span data-lang="weekend">Weekend</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <input type="tel" name="entry.933003305" placeholder="Phone Number">
-              <input type="text" name="entry.2027979226" placeholder="Current Address">
+              <input type="tel" name="entry.933003305" placeholder="Phone Number" data-lang="phone_number">
+              <input type="text" name="entry.2027979226" placeholder="Current Address" data-lang="address">
             </div>
           </div>
           
           <!-- SECTION 3: FINANCIAL INFORMATION -->
           <div class="section">
-            <h4 class="section-title">Financial Information</h4>
+            <h4 class="section-title" data-lang="financial_info">Financial Information</h4>
             <div class="form-group">
-              <input type="text" name="entry.31247918" placeholder="Annual Household Income">
+              <input type="text" name="entry.31247918" placeholder="Annual Household Income" data-lang="income">
               <div class="input-group">
-                <input type="text" name="entry.63753486" placeholder="Budget Min ($)">
-                <input type="text" name="entry.1742932268" placeholder="Budget Max ($)">
+                <input type="text" name="entry.63753486" placeholder="Budget Min ($)" data-lang="budget_min">
+                <input type="text" name="entry.1742932268" placeholder="Budget Max ($)" data-lang="budget_max">
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Pre-approved for Mortgage?</p>
+              <p class="form-group-title" data-lang="pre_approved">Pre-approved for Mortgage?</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1486562159" value="Yes"> Yes</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.11298010" value="No"> No</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1352288329" value="In Process"> In Process</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1486562159" value="Yes"> <span data-lang="yes">Yes</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.11298010" value="No"> <span data-lang="no">No</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1352288329" value="In Process"> <span data-lang="in_process">In Process</span></label>
               </div>
-              <input type="text" name="entry.1914208" placeholder="Pre-approval Amount (if applicable)">
+              <input type="text" name="entry.1914208" placeholder="Pre-approval Amount (if applicable)" data-lang="pre_approval_amount">
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Preferred Lender:</p>
+              <p class="form-group-title" data-lang="pref_lender">Preferred Lender:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.2001525745" value="Have one"> Have One</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1610573986" value="Need Recommendation"> Need Recommendation</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2001525745" value="Have one"> <span data-lang="have_lender">Have One</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1610573986" value="Need Recommendation"> <span data-lang="need_lender">Need Recommendation</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Timeline:</p>
+              <p class="form-group-title" data-lang="timeline">Timeline:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1350110018" value="Timeline: Immediate"> Immediate</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1154472175" value="Timeline: 1-3 Months"> 1-3 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.541301262" value="Timeline: 3-6 Months"> 3-6 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.955570355" value="Timeline: 6+ Months"> 6+ Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1350110018" value="Timeline: Immediate"> <span data-lang="immediate">Immediate</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1154472175" value="Timeline: 1-3 Months"> <span data-lang="1_3_months">1-3 Months</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.541301262" value="Timeline: 3-6 Months"> <span data-lang="3_6_months">3-6 Months</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.955570355" value="Timeline: 6+ Months"> <span data-lang="6_plus_months">6+ Months</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <textarea name="entry.943507636" placeholder="Financial Concerns or Notes"></textarea>
+              <textarea name="entry.943507636" placeholder="Financial Concerns or Notes" data-lang="financial_notes"></textarea>
             </div>
           </div>
           
           <!-- SECTION 4: PROPERTY DETAILS (BUYERS/RENTERS) -->
           <div class="section">
-            <h4 class="section-title">For Buyers/Renters</h4>
+            <h4 class="section-title" data-lang="buyers_renters">For Buyers/Renters</h4>
             <div class="form-group">
-              <p class="form-group-title">Property Type:</p>
+              <p class="form-group-title" data-lang="property_type">Property Type:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.2032480613" value="Property Type: Single-family"> Single-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1441698003" value="Property Type: Condo"> Condo</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.893527413" value="Property Type: Townhouse"> Townhouse</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.936901716" value="Property Type: Multi-family"> Multi-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.710696599" value="Property Type: Commercial"> Commercial</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1394304339" value="Property Type: Land"> Land</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2032480613" value="Property Type: Single-family"> <span data-lang="single_family">Single-family</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1441698003" value="Property Type: Condo"> <span data-lang="condo">Condo</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.893527413" value="Property Type: Townhouse"> <span data-lang="townhouse">Townhouse</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.936901716" value="Property Type: Multi-family"> <span data-lang="multi_family">Multi-family</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.710696599" value="Property Type: Commercial"> <span data-lang="commercial">Commercial</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1394304339" value="Property Type: Land"> <span data-lang="land">Land</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Bedrooms:</p>
+              <p class="form-group-title" data-lang="bedrooms">Bedrooms:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.381637243" value="Bedrooms: 1 Bed"> 1 Bed</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.490256528" value="Bedrooms: 2 Bed"> 2 Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1853218821" value="Bedrooms: 3 Bed"> 3 Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.450869975" value="Bedrooms: 4 Bed"> 4 Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.2124537367" value="Bedrooms: 5+ Bed"> 5+ Beds</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.745418077" value="Bedrooms: No Preference"> No Preference</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.381637243" value="Bedrooms: 1 Bed"> <span data-lang="1_bed">1 Bed</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.490256528" value="Bedrooms: 2 Bed"> <span data-lang="2_beds">2 Beds</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1853218821" value="Bedrooms: 3 Bed"> <span data-lang="3_beds">3 Beds</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.450869975" value="Bedrooms: 4 Bed"> <span data-lang="4_beds">4 Beds</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2124537367" value="Bedrooms: 5+ Bed"> <span data-lang="5_plus_beds">5+ Beds</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.745418077" value="Bedrooms: No Preference"> <span data-lang="no_pref_bed">No Preference</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Bathrooms:</p>
+              <p class="form-group-title" data-lang="bathrooms">Bathrooms:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.473709838" value="Bathrooms: 1 Bath"> 1 Bath</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.558316983" value="Bathrooms: 1.5 Bath"> 1.5 Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1272970267" value="Bathrooms: 2 Bath"> 2 Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.858835020" value="Bathrooms: 2.5 Bath"> 2.5 Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1878111594" value="Bathrooms: 3+ Bath"> 3+ Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1808838484" value="Bathrooms: No Preference"> No Preference</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.473709838" value="Bathrooms: 1 Bath"> <span data-lang="1_bath">1 Bath</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.558316983" value="Bathrooms: 1.5 Bath"> <span data-lang="1_5_baths">1.5 Baths</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1272970267" value="Bathrooms: 2 Bath"> <span data-lang="2_baths">2 Baths</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.858835020" value="Bathrooms: 2.5 Bath"> <span data-lang="2_5_baths">2.5 Baths</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1878111594" value="Bathrooms: 3+ Bath"> <span data-lang="3_plus_baths">3+ Baths</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1808838484" value="Bathrooms: No Preference"> <span data-lang="no_pref_bath">No Preference</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <input type="text" name="entry.1104731367" placeholder="Preferred Square Footage">
-              <input type="text" name="entry.1104739701" placeholder="Preferred Locations/Neighborhoods">
+              <input type="text" name="entry.1104731367" placeholder="Preferred Square Footage" data-lang="square_footage">
+              <input type="text" name="entry.1104739701" placeholder="Preferred Locations/Neighborhoods" data-lang="locations">
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Must-Have Features:</p>
+              <p class="form-group-title" data-lang="must_haves">Must-Have Features:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.186840909" value="Must-Have: Garage"> Garage</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.2019790382" value="Must-Have: Basement"> Basement</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.41356420" value="Must-Have: Pool"> Pool</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1340775271" value="Must-Have: Yard"> Yard</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.537888490" value="Must-Have: Main Floor Bedroom"> Main Floor Bedroom</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.766433860" value="Must-Have: Home Office"> Home Office</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1135960778" value="Must-Have: Open Floor Plan"> Open Floor Plan</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1108962639" value="Must-Have: Updated Kitchen"> Updated Kitchen</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.912778126" value="Must-Have: Updated Baths"> Updated Baths</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1595561522" value="Must-Have: Fireplace"> Fireplace</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1229026181" value="Must-Have: Central A/C"> Central A/C</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1332651778" value="Must-Have: Hardwood Floors"> Hardwood Floors</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.582819493" value="Must-Have: Move-in Ready"> Move-in Ready</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.112908864" value="Must-Have: Fixer-Upper OK"> Fixer-Upper OK</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.186840909" value="Must-Have: Garage"> <span data-lang="garage">Garage</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.2019790382" value="Must-Have: Basement"> <span data-lang="basement">Basement</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.41356420" value="Must-Have: Pool"> <span data-lang="pool">Pool</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1340775271" value="Must-Have: Yard"> <span data-lang="yard">Yard</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.537888490" value="Must-Have: Main Floor Bedroom"> <span data-lang="main_floor_bed">Main Floor Bedroom</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.766433860" value="Must-Have: Home Office"> <span data-lang="home_office">Home Office</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1135960778" value="Must-Have: Open Floor Plan"> <span data-lang="open_floor">Open Floor Plan</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1108962639" value="Must-Have: Updated Kitchen"> <span data-lang="updated_kitchen">Updated Kitchen</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.912778126" value="Must-Have: Updated Baths"> <span data-lang="updated_baths">Updated Baths</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1595561522" value="Must-Have: Fireplace"> <span data-lang="fireplace">Fireplace</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1229026181" value="Must-Have: Central A/C"> <span data-lang="central_ac">Central A/C</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1332651778" value="Must-Have: Hardwood Floors"> <span data-lang="hardwood">Hardwood Floors</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.582819493" value="Must-Have: Move-in Ready"> <span data-lang="move_in_ready">Move-in Ready</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.112908864" value="Must-Have: Fixer-Upper OK"> <span data-lang="fixer_upper">Fixer-Upper OK</span></label>
               </div>
-              <textarea name="entry.1696772007" placeholder="Other Features"></textarea>
+              <textarea name="entry.1696772007" placeholder="Other Features" data-lang="other_features"></textarea>
             </div>
             
             <div class="form-group">
-              <textarea name="entry.49408788" placeholder="Deal Breakers"></textarea>
+              <textarea name="entry.49408788" placeholder="Deal Breakers" data-lang="deal_breakers"></textarea>
             </div>
           </div>
           
           <!-- SECTION 5: PROPERTY DETAILS (SELLERS/LANDLORDS) -->
           <div class="section">
-            <h4 class="section-title">For Sellers/Landlords</h4>
+            <h4 class="section-title" data-lang="sellers_landlords">For Sellers/Landlords</h4>
             <div class="form-group">
-              <input type="text" name="entry.995591954" placeholder="Property Address">
+              <input type="text" name="entry.995591954" placeholder="Property Address" data-lang="property_address">
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Property Type:</p>
+              <p class="form-group-title" data-lang="property_type">Property Type:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1964844066" value="Property Type: Single-family"> Single-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.320610869" value="Property Type: Condo"> Condo</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1576703618" value="Property Type: Townhouse"> Townhouse</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1409071418" value="Property Type: Multi-family"> Multi-family</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.386997212" value="Property Type: Commercial"> Commercial</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.252273983" value="Property Type: Land"> Land</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1964844066" value="Property Type: Single-family"> <span data-lang="single_family">Single-family</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.320610869" value="Property Type: Condo"> <span data-lang="condo">Condo</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1576703618" value="Property Type: Townhouse"> <span data-lang="townhouse">Townhouse</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1409071418" value="Property Type: Multi-family"> <span data-lang="multi_family">Multi-family</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.386997212" value="Property Type: Commercial"> <span data-lang="commercial">Commercial</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.252273983" value="Property Type: Land"> <span data-lang="land">Land</span></label>
               </div>
             </div>
             
             <div class="form-group">
               <div class="input-group">
-                <input type="text" name="entry.718364055" placeholder="Year Built">
-                <input type="text" name="entry.729280676" placeholder="Square Footage">
+                <input type="text" name="entry.718364055" placeholder="Year Built" data-lang="year_built">
+                <input type="text" name="entry.729280676" placeholder="Square Footage" data-lang="square_footage">
               </div>
               <div class="input-group">
-                <input type="text" name="entry.1483680698" placeholder="Bedrooms">
-                <input type="text" name="entry.903600913" placeholder="Bathrooms">
+                <input type="text" name="entry.1483680698" placeholder="Bedrooms" data-lang="bedrooms_input">
+                <input type="text" name="entry.903600913" placeholder="Bathrooms" data-lang="bathrooms_input">
               </div>
               <div class="input-group">
-                <input type="text" name="entry.121111067" placeholder="Mortgage Balance">
-                <input type="text" name="entry.1264906576" placeholder="Estimated Value">
+                <input type="text" name="entry.121111067" placeholder="Mortgage Balance" data-lang="mortgage_balance">
+                <input type="text" name="entry.1264906576" placeholder="Estimated Value" data-lang="estimated_value">
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Reason for Selling/Renting:</p>
+              <p class="form-group-title" data-lang="sell_reason">Reason for Selling/Renting:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1965702414" value="Reason: Upgrading"> Upgrading</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1916753753" value="Reason: Downsizing"> Downsizing</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1063786855" value="Reason: Relocating"> Relocating</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.391207480" value="Reason: Investment"> Investment</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.652358924" value="Reason: Financial"> Financial</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1965702414" value="Reason: Upgrading"> <span data-lang="upgrading">Upgrading</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1916753753" value="Reason: Downsizing"> <span data-lang="downsizing">Downsizing</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1063786855" value="Reason: Relocating"> <span data-lang="relocating">Relocating</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.391207480" value="Reason: Investment"> <span data-lang="investment">Investment</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.652358924" value="Reason: Financial"> <span data-lang="financial">Financial</span></label>
               </div>
-              <textarea name="entry.2025298834" placeholder="Other Reason"></textarea>
+              <textarea name="entry.2025298834" placeholder="Other Reason" data-lang="other_reason"></textarea>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Timeline to Sell/Rent:</p>
+              <p class="form-group-title" data-lang="sell_timeline">Timeline to Sell/Rent:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1209899382" value="Timeline: ASAP"> ASAP</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1878946645" value="Timeline: 1-3 Months"> 1-3 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.983580418" value="Timeline: 3-6 Months"> 3-6 Months</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.788733893" value="Timeline: 6+ Months"> 6+ Months</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1209899382" value="Timeline: ASAP"> <span data-lang="asap">ASAP</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1878946645" value="Timeline: 1-3 Months"> <span data-lang="1_3_months">1-3 Months</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.983580418" value="Timeline: 3-6 Months"> <span data-lang="3_6_months">3-6 Months</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.788733893" value="Timeline: 6+ Months"> <span data-lang="6_plus_months">6+ Months</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Property Condition:</p>
+              <p class="form-group-title" data-lang="property_condition">Property Condition:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1925501794" value="Condition: Excellent"> Excellent</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1675887181" value="Condition: Good"> Good</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.82161121" value="Condition: Fair"> Fair</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.799326532" value="Condition: Needs Work"> Needs Work</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1925501794" value="Condition: Excellent"> <span data-lang="excellent">Excellent</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1675887181" value="Condition: Good"> <span data-lang="good">Good</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.82161121" value="Condition: Fair"> <span data-lang="fair">Fair</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.799326532" value="Condition: Needs Work"> <span data-lang="needs_work">Needs Work</span></label>
               </div>
             </div>
             
             <div class="form-group">
-              <textarea name="entry.2034397475" placeholder="Recent Upgrades/Renovations"></textarea>
+              <textarea name="entry.2034397475" placeholder="Recent Upgrades/Renovations" data-lang="upgrades"></textarea>
             </div>
             
             <div class="form-group">
-              <textarea name="entry.642482004" placeholder="Known Issues with Property"></textarea>
+              <textarea name="entry.642482004" placeholder="Known Issues with Property" data-lang="issues"></textarea>
             </div>
           </div>
           
           <!-- SECTION 6: ADDITIONAL INFORMATION -->
           <div class="section">
-            <h4 class="section-title">Additional Information</h4>
+            <h4 class="section-title" data-lang="additional_info">Additional Information</h4>
             <div class="form-group">
-              <p class="form-group-title">How did you hear about us?</p>
+              <p class="form-group-title" data-lang="how_heard">How did you hear about us?</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.739656714" value="Heard: Referral"> Referral</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.623494412" value="Heard: Website"> Website</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1204546887" value="Heard: Social Media"> Social Media</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.489161094" value="Heard: Sign"> Sign</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1272950740" value="Heard: Online Review"> Online Review</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.739656714" value="Heard: Referral"> <span data-lang="referral">Referral</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.623494412" value="Heard: Website"> <span data-lang="website">Website</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1204546887" value="Heard: Social Media"> <span data-lang="social_media">Social Media</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.489161094" value="Heard: Sign"> <span data-lang="sign">Sign</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1272950740" value="Heard: Online Review"> <span data-lang="online_review">Online Review</span></label>
               </div>
-              <textarea name="entry.2122877220" placeholder="Other Source"></textarea>
+              <textarea name="entry.2122877220" placeholder="Other Source" data-lang="other_source"></textarea>
             </div>
             
             <div class="form-group">
-              <p class="form-group-title">Previous Agent Experience:</p>
+              <p class="form-group-title" data-lang="agent_exp">Previous Agent Experience:</p>
               <div class="checkbox-group">
-                <label class="checkbox-label"><input type="checkbox" name="entry.1463224356" value="Other SourceAgent Experience: Yes"> Worked with Agent</label>
-                <label class="checkbox-label"><input type="checkbox" name="entry.1363468769" value="Agent Experience: No"> No Agent Experience</label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1463224356" value="Other SourceAgent Experience: Yes"> <span data-lang="worked_agent">Worked with Agent</span></label>
+                <label class="checkbox-label"><input type="checkbox" name="entry.1363468769" value="Agent Experience: No"> <span data-lang="no_agent">No Agent Experience</span></label>
               </div>
-              <textarea name="entry.1285214427" placeholder="Describe Previous Agent Experience"></textarea>
+              <textarea name="entry.1285214427" placeholder="Describe Previous Agent Experience" data-lang="agent_desc"></textarea>
             </div>
             
             <div class="form-group">
-              <textarea name="entry.1296254458" placeholder="Special Requests or Concerns"></textarea>
+              <textarea name="entry.1296254458" placeholder="Special Requests or Concerns" data-lang="requests"></textarea>
             </div>
           </div>
         </div>
         
-        <button type="submit">Get Matched with a Top Agent Today!</button>
+        <button type="submit" data-lang="submit">Get Matched with a Top Agent Today!</button>
       </form>
     </div>
-    <footer class="footer">
-      <p><a href="https://tylerbelisle.kw.com/" target="_blank">Powered by <span class="company-name">Web3RealtorFL</span> - Bridging Real Estate & Blockchain</a></p>
+    <footer>
+      <a href="https://tylerbelisle.kw.com/" target="_blank" class="powered-by">Powered by <span style="text-decoration: underline; text-decoration-color: #666; text-underline-offset: 2px;">Web3RealtorFL</span> - Bridging Real Estate & Blockchain</a>
     </footer>
   </div>
 
   <!-- Popup -->
   <div id="thankYouPopup" class="popup">
-    <p>Thank you for submitting! An agent will contact you soon.</p>
-    <button onclick="closePopup()">OK</button>
+    <p data-lang="thank_you">Thank you for submitting! An agent will contact you soon.</p>
+    <button onclick="closePopup()" data-lang="ok">OK</button>
   </div>
 
   <!-- Hidden iframe for form submission -->
   <iframe name="hiddenIframe" style="display:none;"></iframe>
 
   <script>
+    const translations = {
+      en: {
+        title: "Unlock Your Florida Property",
+        subtitle: "Free Agent Matching by a Licensed FL Expert + Web3 Innovator",
+        name: "Your Name",
+        email: "Your Email",
+        type_select: "Buyer, Seller, Renter, Landlord, Investor",
+        type_buyer: "Buyer",
+        type_seller: "Seller",
+        type_renter: "Renter",
+        type_landlord: "Landlord",
+        type_investor: "Investor",
+        details: "Please share some details about your needs (location, timeline, budget, etc.)",
+        dropdown_btn: "+ Add More Details for a Tailored Agent Match!",
+        intake_title: "Client Intake Information",
+        client_type: "Client Type",
+        first_time: "First-time",
+        relocating: "Relocating",
+        contact_prefs: "Contact Preferences",
+        pref_contact_method: "Preferred Contact Method:",
+        phone: "Phone",
+        text: "Text",
+        best_time: "Best Time to Contact:",
+        morning: "Morning",
+        afternoon: "Afternoon",
+        evening: "Evening",
+        weekend: "Weekend",
+        phone_number: "Phone Number",
+        address: "Current Address",
+        financial_info: "Financial Information",
+        income: "Annual Household Income",
+        budget_min: "Budget Min ($)",
+        budget_max: "Budget Max ($)",
+        pre_approved: "Pre-approved for Mortgage?",
+        yes: "Yes",
+        no: "No",
+        in_process: "In Process",
+        pre_approval_amount: "Pre-approval Amount (if applicable)",
+        pref_lender: "Preferred Lender:",
+        have_lender: "Have One",
+        need_lender: "Need Recommendation",
+        timeline: "Timeline:",
+        immediate: "Immediate",
+        "1_3_months": "1-3 Months",
+        "3_6_months": "3-6 Months",
+        "6_plus_months": "6+ Months",
+        financial_notes: "Financial Concerns or Notes",
+        buyers_renters: "For Buyers/Renters",
+        property_type: "Property Type:",
+        single_family: "Single-family",
+        condo: "Condo",
+        townhouse: "Townhouse",
+        multi_family: "Multi-family",
+        commercial: "Commercial",
+        land: "Land",
+        bedrooms: "Bedrooms:",
+        "1_bed": "1 Bed",
+        "2_beds": "2 Beds",
+        "3_beds": "3 Beds",
+        "4_beds": "4 Beds",
+        "5_plus_beds": "5+ Beds",
+        no_pref_bed: "No Preference",
+        bathrooms: "Bathrooms:",
+        "1_bath": "1 Bath",
+        "1_5_baths": "1.5 Baths",
+        "2_baths": "2 Baths",
+        "2_5_baths": "2.5 Baths",
+        "3_plus_baths": "3+ Baths",
+        no_pref_bath: "No Preference",
+        square_footage: "Preferred Square Footage",
+        locations: "Preferred Locations/Neighborhoods",
+        must_haves: "Must-Have Features:",
+        garage: "Garage",
+        basement: "Basement",
+        pool: "Pool",
+        yard: "Yard",
+        main_floor_bed: "Main Floor Bedroom",
+        home_office: "Home Office",
+        open_floor: "Open Floor Plan",
+        updated_kitchen: "Updated Kitchen",
+        updated_baths: "Updated Baths",
+        fireplace: "Fireplace",
+        central_ac: "Central A/C",
+        hardwood: "Hardwood Floors",
+        move_in_ready: "Move-in Ready",
+        fixer_upper: "Fixer-Upper OK",
+        other_features: "Other Features",
+        deal_breakers: "Deal Breakers",
+        sellers_landlords: "For Sellers/Landlords",
+        property_address: "Property Address",
+        year_built: "Year Built",
+        bedrooms_input: "Bedrooms",
+        bathrooms_input: "Bathrooms",
+        mortgage_balance: "Mortgage Balance",
+        estimated_value: "Estimated Value",
+        sell_reason: "Reason for Selling/Renting:",
+        upgrading: "Upgrading",
+        downsizing: "Downsizing",
+        investment: "Investment",
+        financial: "Financial",
+        other_reason: "Other Reason",
+        sell_timeline: "Timeline to Sell/Rent:",
+        asap: "ASAP",
+        property_condition: "Property Condition:",
+        excellent: "Excellent",
+        good: "Good",
+        fair: "Fair",
+        needs_work: "Needs Work",
+        upgrades: "Recent Upgrades/Renovations",
+        issues: "Known Issues with Property",
+        additional_info: "Additional Information",
+        how_heard: "How did you hear about us?",
+        referral: "Referral",
+        website: "Website",
+        social_media: "Social Media",
+        sign: "Sign",
+        online_review: "Online Review",
+        other_source: "Other Source",
+        agent_exp: "Previous Agent Experience:",
+        worked_agent: "Worked with Agent",
+        no_agent: "No Agent Experience",
+        agent_desc: "Describe Previous Agent Experience",
+        requests: "Special Requests or Concerns",
+        submit: "Get Matched with a Top Agent Today!",
+        footer: "Powered by Web3RealtorFL - Bridging Real Estate & Blockchain",
+        thank_you: "Thank you for submitting! An agent will contact you soon.",
+        ok: "OK"
+      },
+      es: {
+        title: "Desbloquea tu propiedad en Florida",
+        subtitle: "Emparejamiento gratuito con agentes por un experto licenciado en FL + Innovador Web3",
+        name: "Tu nombre",
+        email: "Tu correo electrónico",
+        type_select: "Comprador, Vendedor, Inquilino, Arrendador, Inversionista",
+        type_buyer: "Comprador",
+        type_seller: "Vendedor",
+        type_renter: "Inquilino",
+        type_landlord: "Arrendador",
+        type_investor: "Inversionista",
+        details: "Por favor, comparte algunos detalles sobre tus necesidades (ubicación, cronograma, presupuesto, etc.)",
+        dropdown_btn: "+ ¡Añade más detalles para una coincidencia de agente personalizada!",
+        intake_title: "Información de ingreso del cliente",
+        client_type: "Tipo de cliente",
+        first_time: "Primera vez",
+        relocating: "Mudándose",
+        contact_prefs: "Preferencias de contacto",
+        pref_contact_method: "Método de contacto preferido:",
+        phone: "Teléfono",
+        text: "Texto",
+        best_time: "Mejor momento para contactar:",
+        morning: "Mañana",
+        afternoon: "Tarde",
+        evening: "Noche",
+        weekend: "Fin de semana",
+        phone_number: "Número de teléfono",
+        address: "Dirección actual",
+        financial_info: "Información financiera",
+        income: "Ingreso anual del hogar",
+        budget_min: "Presupuesto mínimo ($)",
+        budget_max: "Presupuesto máximo ($)",
+        pre_approved: "¿Preaprobado para hipoteca?",
+        yes: "Sí",
+        no: "No",
+        in_process: "En proceso",
+        pre_approval_amount: "Monto de preaprobación (si aplica)",
+        pref_lender: "Prestamista preferido:",
+        have_lender: "Tengo uno",
+        need_lender: "Necesito recomendación",
+        timeline: "Cronograma:",
+        immediate: "Inmediato",
+        "1_3_months": "1-3 meses",
+        "3_6_months": "3-6 meses",
+        "6_plus_months": "6+ meses",
+        financial_notes: "Preocupaciones o notas financieras",
+        buyers_renters: "Para compradores/inquilinos",
+        property_type: "Tipo de propiedad:",
+        single_family: "Unifamiliar",
+        condo: "Condominio",
+        townhouse: "Casa adosada",
+        multi_family: "Multifamiliar",
+        commercial: "Comercial",
+        land: "Terreno",
+        bedrooms: "Dormitorios:",
+        "1_bed": "1 Cama",
+        "2_beds": "2 Camas",
+        "3_beds": "3 Camas",
+        "4_beds": "4 Camas",
+        "5_plus_beds": "5+ Camas",
+        no_pref_bed: "Sin preferencia",
+        bathrooms: "Baños:",
+        "1_bath": "1 Baño",
+        "1_5_baths": "1.5 Baños",
+        "2_baths": "2 Baños",
+        "2_5_baths": "2.5 Baños",
+        "3_plus_baths": "3+ Baños",
+        no_pref_bath: "Sin preferencia",
+        square_footage: "Metros cuadrados preferidos",
+        locations: "Ubicaciones/barrios preferidos",
+        must_haves: "Características imprescindibles:",
+        garage: "Garaje",
+        basement: "Sótano",
+        pool: "Piscina",
+        yard: "Patio",
+        main_floor_bed: "Dormitorio en planta baja",
+        home_office: "Oficina en casa",
+        open_floor: "Planta abierta",
+        updated_kitchen: "Cocina actualizada",
+        updated_baths: "Baños actualizados",
+        fireplace: "Chimenea",
+        central_ac: "Aire acondicionado central",
+        hardwood: "Pisos de madera",
+        move_in_ready: "Listo para mudarse",
+        fixer_upper: "Para renovar OK",
+        other_features: "Otras características",
+        deal_breakers: "Factores decisivos",
+        sellers_landlords: "Para vendedores/arrendadores",
+        property_address: "Dirección de la propiedad",
+        year_built: "Año de construcción",
+        bedrooms_input: "Dormitorios",
+        bathrooms_input: "Baños",
+        mortgage_balance: "Saldo de la hipoteca",
+        estimated_value: "Valor estimado",
+        sell_reason: "Razón para vender/alquilar:",
+        upgrading: "Mejorar",
+        downsizing: "Reducir",
+        investment: "Inversión",
+        financial: "Financiero",
+        other_reason: "Otra razón",
+        sell_timeline: "Cronograma para vender/alquilar:",
+        asap: "Lo antes posible",
+        property_condition: "Condición de la propiedad:",
+        excellent: "Excelente",
+        good: "Bueno",
+        fair: "Regular",
+        needs_work: "Necesita trabajo",
+        upgrades: "Mejoras/renovaciones recientes",
+        issues: "Problemas conocidos con la propiedad",
+        additional_info: "Información adicional",
+        how_heard: "¿Cómo nos conociste?",
+        referral: "Referencia",
+        website: "Sitio web",
+        social_media: "Redes sociales",
+        sign: "Cartel",
+        online_review: "Revisión en línea",
+        other_source: "Otra fuente",
+        agent_exp: "Experiencia previa con agente:",
+        worked_agent: "Trabajó con agente",
+        no_agent: "Sin experiencia con agente",
+        agent_desc: "Describe la experiencia previa con agente",
+        requests: "Solicitudes o preocupaciones especiales",
+        submit: "¡Encuentra un agente top hoy!",
+        footer: "Powered by Web3RealtorFL - Bridging Real Estate & Blockchain",
+        thank_you: "¡Gracias por enviar! Un agente te contactará pronto.",
+        ok: "OK"
+      },
+      zh: {
+        title: "解锁您的佛罗里达房产",
+        subtitle: "由佛罗里达州持牌专家和Web3创新者提供免费代理匹配",
+        name: "您的姓名",
+        email: "您的电子邮件",
+        type_select: "买家、卖家、租户、房东、投资者",
+        type_buyer: "买家",
+        type_seller: "卖家",
+        type_renter: "租户",
+        type_landlord: "房东",
+        type_investor: "投资者",
+        details: "请分享您需求的详细信息（位置、时间表、预算等）",
+        dropdown_btn: "+ 添加更多详情以获得定制代理匹配！",
+        intake_title: "客户信息采集",
+        client_type: "客户类型",
+        first_time: "首次购房者",
+        relocating: "搬迁",
+        contact_prefs: "联系偏好",
+        pref_contact_method: "首选联系方式：",
+        phone: "电话",
+        text: "短信",
+        best_time: "最佳联系时间：",
+        morning: "上午",
+        afternoon: "下午",
+        evening: "晚上",
+        weekend: "周末",
+        phone_number: "电话号码",
+        address: "当前地址",
+        financial_info: "财务信息",
+        income: "年家庭收入",
+        budget_min: "预算最低 ($)",
+        budget_max: "预算最高 ($)",
+        pre_approved: "是否已获得抵押贷款预批？",
+        yes: "是",
+        no: "否",
+        in_process: "处理中",
+        pre_approval_amount: "预批金额（如适用）",
+        pref_lender: "首选贷款机构：",
+        have_lender: "已有贷款机构",
+        need_lender: "需要推荐",
+        timeline: "时间表：",
+        immediate: "立即",
+        "1_3_months": "1-3个月",
+        "3_6_months": "3-6个月",
+        "6_plus_months": "6个月以上",
+        financial_notes: "财务问题或备注",
+        buyers_renters: "买家/租户信息",
+        property_type: "物业类型：",
+        single_family: "独栋住宅",
+        condo: "公寓",
+        townhouse: "联排别墅",
+        multi_family: "多家庭住宅",
+        commercial: "商业物业",
+        land: "土地",
+        bedrooms: "卧室：",
+        "1_bed": "1卧",
+        "2_beds": "2卧",
+        "3_beds": "3卧",
+        "4_beds": "4卧",
+        "5_plus_beds": "5卧以上",
+        no_pref_bed: "无偏好",
+        bathrooms: "浴室：",
+        "1_bath": "1浴",
+        "1_5_baths": "1.5浴",
+        "2_baths": "2浴",
+        "2_5_baths": "2.5浴",
+        "3_plus_baths": "3浴以上",
+        no_pref_bath: "无偏好",
+        square_footage: "首选面积",
+        locations: "首选地点/社区",
+        must_haves: "必备特点：",
+        garage: "车库",
+        basement: "地下室",
+        pool: "泳池",
+        yard: "庭院",
+        main_floor_bed: "主层卧室",
+        home_office: "家庭办公室",
+        open_floor: "开放式楼层",
+        updated_kitchen: "更新厨房",
+        updated_baths: "更新浴室",
+        fireplace: "壁炉",
+        central_ac: "中央空调",
+        hardwood: "木地板",
+        move_in_ready: "即入住",
+        fixer_upper: "可翻修",
+        other_features: "其他特点",
+        deal_breakers: "交易障碍",
+        sellers_landlords: "卖家/房东信息",
+        property_address: "物业地址",
+        year_built: "建造年份",
+        bedrooms_input: "卧室",
+        bathrooms_input: "浴室",
+        mortgage_balance: "抵押贷款余额",
+        estimated_value: "估算价值",
+        sell_reason: "出售/出租原因：",
+        upgrading: "升级",
+        downsizing: "缩小",
+        investment: "投资",
+        financial: "财务",
+        other_reason: "其他原因",
+        sell_timeline: "出售/出租时间表：",
+        asap: "尽快",
+        property_condition: "物业状况：",
+        excellent: "优秀",
+        good: "良好",
+        fair: "一般",
+        needs_work: "需要维修",
+        upgrades: "近期升级/翻新",
+        issues: "已知物业问题",
+        additional_info: "附加信息",
+        how_heard: "您是如何得知我们的？",
+        referral: "推荐",
+        website: "网站",
+        social_media: "社交媒体",
+        sign: "标志",
+        online_review: "在线评论",
+        other_source: "其他来源",
+        agent_exp: "之前与代理的经验：",
+        worked_agent: "曾与代理合作",
+        no_agent: "无代理经验",
+        agent_desc: "描述之前与代理的经验",
+        requests: "特殊请求或关注点",
+        submit: "立即匹配顶级代理！",
+        footer: "Powered by Web3RealtorFL - Bridging Real Estate & Blockchain",
+        thank_you: "感谢您的提交！代理将很快联系您。",
+        ok: "确定"
+      }
+    };
+
+    function changeLanguage(lang) {
+      document.querySelectorAll(".language-text").forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.getAttribute("data-lang-code") === lang) {
+          btn.classList.add("active");
+        }
+      });
+
+      document.querySelectorAll("[data-lang]").forEach(element => {
+        const key = element.getAttribute("data-lang");
+        if (translations[lang][key]) {
+          if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+            element.placeholder = translations[lang][key];
+          } else if (element.tagName === "BUTTON" && element.querySelector(".dropdown-icon")) {
+            element.childNodes[0].textContent = translations[lang][key];
+          } else {
+            element.textContent = translations[lang][key];
+          }
+        }
+      });
+      document.documentElement.lang = lang;
+    }
+
     function toggleDropdown() {
       var content = document.getElementById("moreInfo");
       if (content.style.display === "block") {
@@ -620,21 +1083,20 @@
       event.preventDefault();
       const form = document.getElementById("referralForm");
       const formData = new FormData(form);
-
-      // Show popup immediately
       document.getElementById("thankYouPopup").style.display = "block";
       setTimeout(() => {
         form.reset();
         document.getElementById("moreInfo").style.display = "none";
       }, 500);
-
-      // Submit to iframe silently
       form.submit();
     }
 
     function closePopup() {
       document.getElementById("thankYouPopup").style.display = "none";
     }
+
+    // Set initial language to English
+    window.onload = () => changeLanguage('en');
   </script>
 </body>
 </html>
