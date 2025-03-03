@@ -125,16 +125,13 @@
   }
   .dropdown-content h3 {
     font-size: 1.2em;
-    color: #fff;
-    background: linear-gradient(to right, #00ccff, #0099cc);
-    margin: -15px -15px 20px -15px;
-    padding: 10px;
-    border-radius: 6px 6px 0 0;
+    color: #00ccff;
+    margin-bottom: 20px;
     text-align: center;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
   }
   .section {
     margin-bottom: 25px;
@@ -233,12 +230,20 @@
     background: linear-gradient(to right, #0099cc, #0077aa);
   }
   .footer {
-    margin-top: 20px;
-    font-size: 0.85em;
-    font-weight: 300;
-    color: #b3b3b3;
-    letter-spacing: 0.03em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 0.9em;
+  }
+  .footer a {
+    color: #00ccff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer a:hover {
+    color: #0099cc;
+    text-decoration: underline;
   }
   .popup {
     display: none;
@@ -588,7 +593,9 @@
         <button type="submit">Get Matched with a Top Agent Today!</button>
       </form>
     </div>
-    <p class="footer">Powered by Baloo - Bridging Real Estate & Web3</p>
+    <div class="footer">
+      <p>Powered by <a href="https://baloo.com">Baloo</a> - Bridging Real Estate & Web3</p>
+    </div>
   </div>
 
   <!-- Popup -->
