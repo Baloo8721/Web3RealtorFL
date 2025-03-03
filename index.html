@@ -91,13 +91,13 @@
     width: 100%;
     padding: 12px;
     margin: 8px 0;
-    background: linear-gradient(to right, #5bc0de, #4aa6c0); /* Lighter blue compared to main button */
+    background: linear-gradient(to right, rgba(41, 41, 51, 0.9), rgba(51, 51, 66, 0.9));
     color: #fff;
-    border: none;
+    border: 1px solid #00ccff;
     border-radius: 6px;
     font-size: 0.9em;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +105,8 @@
     text-align: center;
   }
   .dropdown-btn:hover {
-    background: linear-gradient(to right, #4aa6c0, #3a95ae);
+    background: linear-gradient(to right, rgba(51, 51, 66, 0.9), rgba(61, 61, 76, 0.9));
+    border-color: #0099cc;
   }
   .dropdown-icon {
     font-size: 0.7em;
