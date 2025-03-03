@@ -259,7 +259,27 @@
       h1 { font-size: 1.8em; }
       p.subtitle { font-size: 0.9em; }
       .form-box { padding: 15px; }
-      .checkbox-label { width: calc(50% - 6px); }
+      
+      /* New checkbox layout for mobile */
+      .checkbox-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+      }
+      
+      .checkbox-label {
+        width: auto;
+        margin: 0;
+        font-size: 0.85em;
+        padding: 5px 8px;
+      }
+      
+      /* For any sections where you want a single checkbox to span full width */
+      .checkbox-label:only-child,
+      .checkbox-label:nth-last-child(1):nth-child(odd) {
+        grid-column: 1 / -1;
+      }
+      
       .dropdown-content { max-height: 400px; }
       .input-group { flex-direction: column; gap: 4px; }
     }
