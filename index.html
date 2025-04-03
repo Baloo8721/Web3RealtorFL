@@ -401,6 +401,8 @@
           </label>
         </div>
         
+        <input type="hidden" name="entry.46770330" id="selectedLanguage" value="en">
+        
         <button type="button" class="dropdown-btn" onclick="toggleDropdown()" data-lang="dropdown_btn">+ Add More Details for a Tailored Agent Match! <span class="dropdown-icon">▼</span></button>
         
         <div id="moreInfo" class="dropdown-content">
@@ -1751,7 +1753,7 @@
         excellent: "Eccellente",
         good: "Buono",
         fair: "Discreto",
-        needs_work: "Necessita di lavori",
+        needs_work: "Necessita di lavoro",
         upgrades: "Aggiornamenti/ristrutturazioni recenti",
         issues: "Problemi noti con la proprietà",
         additional_info: "Informazioni aggiuntive",
@@ -1763,9 +1765,9 @@
         online_review: "Recensione online",
         other_source: "Altra fonte",
         agent_exp: "Esperienza precedente con agente:",
-        worked_agent: "Ha lavorato con un agente",
+        worked_agent: "Ha lavorato con agente",
         no_agent: "Nessuna esperienza con agente",
-        agent_desc: "Descrivi l'esperienza precedente con un agente",
+        agent_desc: "Descrivi l'esperienza precedente con agente",
         requests: "Richieste o preoccupazioni speciali",
         submit: "Trova un agente top oggi!",
         footer: "Offerto da Web3RealtorFL - Collegamento tra immobiliare e blockchain",
@@ -1924,11 +1926,11 @@
         subtitle: "フロリダ州認可の専門家 + Web3イノベーターによる無料エージェントマッチング",
         name: "お名前",
         email: "あなたのメール",
-        type_select: "購入者、販売者、賃借人、家主、投資家",
+        type_select: "購入者、売却者、賃借人、大家、投資家",
         type_buyer: "購入者",
-        type_seller: "販売者",
+        type_seller: "売却者",
         type_renter: "賃借人",
-        type_landlord: "家主",
+        type_landlord: "大家",
         type_investor: "投資家",
         details: "あなたのニーズに関する詳細（場所、時間枠、予算など）を共有してください",
         dropdown_btn: "+ カスタマイズされたエージェントマッチングのために詳細を追加！",
@@ -1949,8 +1951,8 @@
         address: "現在の住所",
         financial_info: "財務情報",
         income: "年間世帯収入",
-        budget_min: "最低予算 ($)",
-        budget_max: "最高予算 ($)",
+        budget_min: "予算最低 ($)",
+        budget_max: "予算最高 ($)",
         pre_approved: "住宅ローンの事前承認済みですか？",
         yes: "はい",
         no: "いいえ",
@@ -1961,8 +1963,8 @@
         need_lender: "推薦が必要",
         timeline: "時間枠：",
         immediate: "即時",
-        "1_3_months": "1〜3か月",
-        "3_6_months": "3〜6か月",
+        "1_3_months": "1-3か月",
+        "3_6_months": "3-6か月",
         "6_plus_months": "6か月以上",
         financial_notes: "財務上の懸念またはメモ",
         buyers_renters: "購入者/賃借人向け",
@@ -1974,11 +1976,11 @@
         commercial: "商業用",
         land: "土地",
         bedrooms: "寝室：",
-        "1_bed": "1ベッド",
-        "2_beds": "2ベッド",
-        "3_beds": "3ベッド",
-        "4_beds": "4ベッド",
-        "5_plus_beds": "5ベッド以上",
+        "1_bed": "1寝室",
+        "2_beds": "2寝室",
+        "3_beds": "3寝室",
+        "4_beds": "4寝室",
+        "5_plus_beds": "5寝室以上",
         no_pref_bed: "特に希望なし",
         bathrooms: "浴室：",
         "1_bath": "1浴室",
@@ -2000,13 +2002,13 @@
         updated_kitchen: "更新されたキッチン",
         updated_baths: "更新された浴室",
         fireplace: "暖炉",
-        central_ac: "セントラルエアコン",
+        central_ac: "中央空調",
         hardwood: "木製フローリング",
         move_in_ready: "即入居可",
         fixer_upper: "修復可",
         other_features: "その他の特徴",
         deal_breakers: "取引の障害",
-        sellers_landlords: "販売者/家主向け",
+        sellers_landlords: "売家/大家向け",
         property_address: "物件の住所",
         year_built: "建造年",
         bedrooms_input: "寝室",
@@ -2037,7 +2039,7 @@
         online_review: "オンラインレビュー",
         other_source: "その他の情報源",
         agent_exp: "以前のエージェント経験：",
-        worked_agent: "エージェントと協力した",
+        worked_agent: "以前のエージェントと協力した",
         no_agent: "エージェント経験なし",
         agent_desc: "以前のエージェント経験を記述",
         requests: "特別な要望または懸念",
@@ -2046,6 +2048,20 @@
         thank_you: "ご提出ありがとうございます！エージェントがまもなくご連絡いたします。",
         ok: "OK"
       }
+    };
+
+    // Language mapping from abbreviations to full English names
+    const languageNames = {
+      "en": "English",
+      "es": "Spanish",
+      "zh": "Chinese",
+      "ar": "Arabic",
+      "ru": "Russian",
+      "pt": "Portuguese",
+      "fr": "French",
+      "it": "Italian",
+      "de": "German",
+      "ja": "Japanese"
     };
 
     function changeLanguage(lang) {
@@ -2070,13 +2086,35 @@
           }
         });
         document.documentElement.lang = lang;
+
+        // Update hidden input with full English name
+        document.getElementById("selectedLanguage").value = languageNames[lang] || lang;
+
         console.log('Language changed to:', lang);
       } else {
         console.error(`Language ${lang} not found in translations.`);
       }
     }
 
-    // Rest of your existing JavaScript functions remain unchanged
+    // Load preferred language from localStorage if available
+    window.onload = function() {
+      const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+      changeLanguage(preferredLang);
+    };
+
+    function submitForm(event) {
+      const form = document.getElementById("referralForm");
+      
+      // Debug: Log the selected language
+      console.log("Selected Language on Submit:", document.getElementById("selectedLanguage").value);
+      
+      document.getElementById("thankYouPopup").style.display = "block";
+      setTimeout(() => {
+        form.reset();
+        document.getElementById("moreInfo").style.display = "none";
+      }, 1000);
+    }
+
     function toggleDropdown() {
       var content = document.getElementById("moreInfo");
       if (content.style.display === "block") {
@@ -2086,24 +2124,9 @@
       }
     }
 
-    function submitForm(event) {
-      const form = document.getElementById("referralForm");
-      
-      // Show popup immediately
-      document.getElementById("thankYouPopup").style.display = "block";
-      
-      // Submit the form via fetch to Google Forms
-      setTimeout(() => {
-        form.reset();
-        document.getElementById("moreInfo").style.display = "none";
-      }, 1000); // 1 second delay to ensure submission hits Google
-    }
-
     function closePopup() {
       document.getElementById("thankYouPopup").style.display = "none";
     }
-
-    window.onload = () => changeLanguage('en');
   </script>
 </body>
 </html>
