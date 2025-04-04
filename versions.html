@@ -1,16 +1,53 @@
-<!DOCTYPE html>
+echo "<!DOCTYPE html>
 <html>
 <head>
     <title>Web3RealtorFL - UI Versions</title>
     <style>
-        body { font-family: "Inter", sans-serif; margin: 20px; }
-        .version-link { display: block; margin: 10px 0; padding: 10px; background: #00ccff; color: white; text-decoration: none; border-radius: 5px; }
-        .version-link:hover { background: #0099cc; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 20px; 
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .version-link { 
+            display: block; 
+            margin: 15px 0; 
+            padding: 15px 20px;
+            background: linear-gradient(to right, #26c6da, #0288d1);
+            color: white; 
+            text-decoration: none; 
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(38, 198, 218, 0.2);
+        }
+        .version-link:hover { 
+            background: linear-gradient(to right, #0288d1, #01579b);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(38, 198, 218, 0.3);
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #26c6da;
+            text-shadow: 0 2px 6px rgba(38, 198, 218, 0.4);
+            margin-bottom: 30px;
+        }
+        p {
+            color: #e0e6ed;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Web3RealtorFL UI Versions</h1>
-    <a href="ui-versions/v1/index.html" class="version-link">Version 1 - Modern Design</a>
-    <a href="index.html" class="version-link">Original Version</a>
+    <div class=\"container\">
+        <h1>Web3RealtorFL UI Versions</h1>
+        <p>Select your preferred UI version:</p>
+        <a href=\"index.html\" class=\"version-link\">Original Version - Classic Design</a>
+        <a href=\"ui-versions/v1/index.html\" class=\"version-link\">Version 1 - Modern Glassmorphism</a>
+    </div>
 </body>
-</html>
+</html>" > versions.html
